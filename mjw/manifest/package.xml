@@ -32,5 +32,14 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>*</members>
+        <members>Account</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Flexipage</name>
+    </types>
     <version>59.0</version>
 </Package>
