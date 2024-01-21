@@ -26,7 +26,7 @@
         <name>region3</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>MemikiApp</masterLabel>
+    <masterLabel>TestingMemikiApp</masterLabel>
     <template>
         <name>flexipage:appHomeTemplateTwoColumnsStacked</name>
     </template>
