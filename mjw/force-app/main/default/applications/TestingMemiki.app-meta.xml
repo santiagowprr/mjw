@@ -11,9 +11,8 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Testing Memiki</label>
     <navType>Standard</navType>
-    <tabs>standard-AppLauncher</tabs>
     <tabs>Meme__c</tabs>
-    <tabs>MemikiApp</tabs>
+    <tabs>TestingMemiki</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Memiki_UtilityBar</utilityBar>
 </CustomApplication>

@@ -3,16 +3,8 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>flowLayout</name>
-                    <value>oneColumn</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>flowName</name>
-                    <value>create_a_meme_flow</value>
-                </componentInstanceProperties>
-                <componentName>flowruntime:interview</componentName>
-                <identifier>flowruntime_interview</identifier>
+                <componentName>selectAction</componentName>
+                <identifier>c_selectAction</identifier>
             </componentInstance>
         </itemInstances>
         <name>region1</name>
@@ -26,7 +18,7 @@
         <name>region3</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>TestingMemikiApp</masterLabel>
+    <masterLabel>Testing Memiki Flexipage</masterLabel>
     <template>
         <name>flexipage:appHomeTemplateTwoColumnsStacked</name>
     </template>

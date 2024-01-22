@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>is_duplicate</name>
+        <label>is duplicate?</label>
+        <locationX>685</locationX>
+        <locationY>234</locationY>
+        <defaultConnector>
+            <targetReference>wrong_input_default_outcome_decision_screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>duplicate_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>check_if_record_exists.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>duplicate_found_screen</targetReference>
+            </connector>
+            <label>duplicate found</label>
+        </rules>
+        <rules>
+            <name>no_duplicates_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>check_if_record_exists.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <label>no duplicates found</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>create a meme flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>create a meme flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>create_new_meme</name>
+        <label>create new meme</label>
+        <locationX>426</locationX>
+        <locationY>667</locationY>
+        <connector>
+            <targetReference>Finish_screen</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Meme_name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Meme__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>check_if_record_exists</name>
+        <label>check if record exists</label>
+        <locationX>507</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsDeleted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Meme__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>duplicate_found_screen</name>
+        <label>duplicate found screen</label>
+        <locationX>1008</locationX>
+        <locationY>280</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>duplicate_found_display_text</name>
+            <fieldText>&lt;p&gt;Duplicate found! Go back&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>duplicate_found_screen_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>duplicate_found_screen_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Finish_screen</name>
+        <label>Finish screen</label>
+        <locationX>171</locationX>
+        <locationY>491</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>This_is_a_test</name>
+        <label>This is a test</label>
+        <locationX>267</locationX>
+        <locationY>214</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>create_new_meme</targetReference>
+        </connector>
+        <fields>
+            <name>test_display_text</name>
+            <fieldText>&lt;p&gt;Hi {!$User.FirstName} !&lt;/p&gt;&lt;p&gt;This is a test. Enter a new meme name and &lt;/p&gt;&lt;p&gt;click Finish&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Meme_name</name>
+            <dataType>String</dataType>
+            <fieldText>Meme name:</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>wrong_input_default_outcome_decision_screen</name>
+        <label>wrong input default outcome decision screen</label>
+        <locationX>964</locationX>
+        <locationY>79</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>wrong_input_display_text</name>
+            <fieldText>&lt;p&gt;Wrong input&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>586</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>This_is_a_test</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

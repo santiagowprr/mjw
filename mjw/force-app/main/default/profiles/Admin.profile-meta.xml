@@ -782,7 +782,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>TestingMemiki</tab>
-        <visibility>Hidden</visibility>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Trailhead_Data_Manager</tab>
